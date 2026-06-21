@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <InternalsVisibleTo Include="SchedulingLib.Persistence.PostgreSQL.Tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Dapper" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchedulingLib.Services\SchedulingLib.Services.csproj" />
+  </ItemGroup>
+</Project>
