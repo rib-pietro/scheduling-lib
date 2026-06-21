@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/SchedulingLib.Connectors.GoogleCalendar/SchedulingLib.Connectors.GoogleCalendar.csproj" />
     <Project Path="src/SchedulingLib.Core/SchedulingLib.Core.csproj" />
     <Project Path="src/SchedulingLib.Persistence.PostgreSQL/SchedulingLib.Persistence.PostgreSQL.csproj" />
     <Project Path="src/SchedulingLib.Reservations.Extensions/SchedulingLib.Reservations.Extensions.csproj" />
@@ -9,7 +8,6 @@
     <Project Path="src/SchedulingLib.Services/SchedulingLib.Services.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/SchedulingLib.Connectors.GoogleCalendar.Tests/SchedulingLib.Connectors.GoogleCalendar.Tests.csproj" />
     <Project Path="tests/SchedulingLib.Core.Tests/SchedulingLib.Core.Tests.csproj" />
     <Project Path="tests/SchedulingLib.Persistence.PostgreSQL.Tests/SchedulingLib.Persistence.PostgreSQL.Tests.csproj" />
     <Project Path="tests/SchedulingLib.Reservations.Extensions.Tests/SchedulingLib.Reservations.Extensions.Tests.csproj" />

@@ -13,9 +13,6 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.0" />
-    <!-- Google Calendar connector -->
-    <PackageVersion Include="Google.Apis.Calendar.v3" Version="1.74.0.4154" />
-    <PackageVersion Include="Google.Apis.Auth" Version="1.75.0" />
     <!-- PostgreSQL persistence -->
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageVersion Include="Dapper" Version="2.1.35" />

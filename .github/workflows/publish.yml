@@ -22,8 +22,7 @@ jobs:
                       src/SchedulingLib.Services.Extensions \
                       src/SchedulingLib.Reservations \
                       src/SchedulingLib.Reservations.Extensions \
-                      src/SchedulingLib.Persistence.PostgreSQL \
-                      src/SchedulingLib.Connectors.GoogleCalendar; do
+                      src/SchedulingLib.Persistence.PostgreSQL; do
             dotnet pack "$proj" -c Release -o ./nupkgs
           done
       - name: Push to GitHub Packages
