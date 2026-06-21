@@ -1,0 +1,12 @@
+<Project>
+  <!-- Import the root Directory.Build.props so shared settings (TargetFramework, Nullable, etc.) apply -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <!-- Opt sample projects out of NuGet packaging -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Version></Version>
+    <Authors></Authors>
+    <RepositoryUrl></RepositoryUrl>
+  </PropertyGroup>
+</Project>

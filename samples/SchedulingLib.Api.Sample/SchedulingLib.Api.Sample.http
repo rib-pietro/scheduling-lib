@@ -1,0 +1,6 @@
+@SchedulingLib.Api.Sample_HostAddress = http://localhost:5085
+
+GET {{SchedulingLib.Api.Sample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

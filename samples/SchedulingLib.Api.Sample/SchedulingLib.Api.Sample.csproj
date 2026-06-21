@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SchedulingLib.Services" />
+    <PackageReference Include="SchedulingLib.Services.Extensions" />
+    <PackageReference Include="SchedulingLib.Persistence.PostgreSQL" />
+  </ItemGroup>
+
+</Project>

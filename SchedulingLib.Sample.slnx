@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/SchedulingLib.Api.Sample/SchedulingLib.Api.Sample.csproj" />
+  </Folder>
+</Solution>

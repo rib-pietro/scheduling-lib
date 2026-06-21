@@ -1,0 +1,30 @@
+name: Publish NuGet Packages
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Pack
+        run: |
+          for proj in src/SchedulingLib.Core \
+                      src/SchedulingLib.Services \
+                      src/SchedulingLib.Services.Extensions \
+                      src/SchedulingLib.Reservations \
+                      src/SchedulingLib.Reservations.Extensions \
+                      src/SchedulingLib.Persistence.PostgreSQL \
+                      src/SchedulingLib.Connectors.GoogleCalendar; do
+            dotnet pack "$proj" -c Release -o ./nupkgs
+          done
+      - name: Push to GitHub Packages
+        run: dotnet nuget push ./nupkgs/*.nupkg --source "https://nuget.pkg.github.com/rib-pietro/index.json" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
