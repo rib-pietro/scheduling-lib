@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.Calendar.v3" />
+    <PackageReference Include="Google.Apis.Auth" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchedulingLib.Core\SchedulingLib.Core.csproj" />
+  </ItemGroup>
+</Project>

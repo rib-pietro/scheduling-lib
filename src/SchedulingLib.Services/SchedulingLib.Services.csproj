@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\SchedulingLib.Core\SchedulingLib.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Logs and temp
+*.log
+*.tmp
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Local Claude Code settings (not project instructions)
+.claude/
