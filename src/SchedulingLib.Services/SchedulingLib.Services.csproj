@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Services domain — staff members, service types, appointments, and booking logic.</Description>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchedulingLib.Core\SchedulingLib.Core.csproj" />
   </ItemGroup>

@@ -20,5 +20,9 @@
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageVersion Include="Dapper" Version="2.1.35" />
     <PackageVersion Include="Testcontainers.PostgreSql" Version="4.4.0" />
+    <!-- Scheduling library packages (consumed by samples) -->
+    <PackageVersion Include="SchedulingLib.Services" Version="1.0.0" />
+    <PackageVersion Include="SchedulingLib.Services.Extensions" Version="1.0.0" />
+    <PackageVersion Include="SchedulingLib.Persistence.PostgreSQL" Version="1.0.0" />
   </ItemGroup>
 </Project>

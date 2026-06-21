@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>PostgreSQL persistence for the services scheduling domain using EF Core and Dapper.</Description>
+  </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="SchedulingLib.Persistence.PostgreSQL.Tests" />
   </ItemGroup>

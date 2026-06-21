@@ -17,6 +17,7 @@ obj/
 # NuGet
 *.nupkg
 *.snupkg
+local-packages/
 
 # Local Claude Code settings (not project instructions)
 .claude/

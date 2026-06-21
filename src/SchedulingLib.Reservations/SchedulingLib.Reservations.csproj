@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Reservations domain — reservable resources and reservation management.</Description>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchedulingLib.Core\SchedulingLib.Core.csproj" />
   </ItemGroup>

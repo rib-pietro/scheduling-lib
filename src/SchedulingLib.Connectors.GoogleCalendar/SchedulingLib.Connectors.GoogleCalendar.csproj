@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Google Calendar connector implementing ICalendarConnector for the scheduling library.</Description>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Apis.Calendar.v3" />
     <PackageReference Include="Google.Apis.Auth" />
