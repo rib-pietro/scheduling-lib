@@ -11,5 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchedulingLib.Services\SchedulingLib.Services.csproj" />
+    <ProjectReference Include="..\SchedulingLib.Users\SchedulingLib.Users.csproj" />
   </ItemGroup>
 </Project>

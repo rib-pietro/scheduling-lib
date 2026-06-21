@@ -1,0 +1,7 @@
+<Project>
+  <!-- Test projects don't need XML doc comments on every public member. -->
+  <!-- IsTestProject is set by Microsoft.NET.Test.Sdk, so it must be read here (targets), not in props. -->
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+</Project>

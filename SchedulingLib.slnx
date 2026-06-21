@@ -6,6 +6,8 @@
     <Project Path="src/SchedulingLib.Reservations/SchedulingLib.Reservations.csproj" />
     <Project Path="src/SchedulingLib.Services.Extensions/SchedulingLib.Services.Extensions.csproj" />
     <Project Path="src/SchedulingLib.Services/SchedulingLib.Services.csproj" />
+    <Project Path="src/SchedulingLib.Users.Extensions/SchedulingLib.Users.Extensions.csproj" />
+    <Project Path="src/SchedulingLib.Users/SchedulingLib.Users.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SchedulingLib.Core.Tests/SchedulingLib.Core.Tests.csproj" />
@@ -14,5 +16,7 @@
     <Project Path="tests/SchedulingLib.Reservations.Tests/SchedulingLib.Reservations.Tests.csproj" />
     <Project Path="tests/SchedulingLib.Services.Extensions.Tests/SchedulingLib.Services.Extensions.Tests.csproj" />
     <Project Path="tests/SchedulingLib.Services.Tests/SchedulingLib.Services.Tests.csproj" />
+    <Project Path="tests/SchedulingLib.Users.Extensions.Tests/SchedulingLib.Users.Extensions.Tests.csproj" />
+    <Project Path="tests/SchedulingLib.Users.Tests/SchedulingLib.Users.Tests.csproj" />
   </Folder>
 </Solution>

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Users domain — registration and identity management for clients across scheduling domains.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchedulingLib.Core\SchedulingLib.Core.csproj" />
+  </ItemGroup>
+</Project>

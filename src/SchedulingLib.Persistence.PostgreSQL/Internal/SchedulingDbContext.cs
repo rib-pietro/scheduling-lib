@@ -8,9 +8,21 @@ internal sealed class SchedulingDbContext(DbContextOptions<SchedulingDbContext> 
     internal DbSet<StaffMemberRow> StaffMembers => Set<StaffMemberRow>();
     internal DbSet<ServiceAppointmentRow> ServiceAppointments => Set<ServiceAppointmentRow>();
     internal DbSet<ServiceTypeRow> ServiceTypes => Set<ServiceTypeRow>();
+    internal DbSet<UserRow> Users => Set<UserRow>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<UserRow>(b =>
+        {
+            b.ToTable("users");
+            b.HasKey(r => r.Id);
+            b.Property(r => r.Id).HasColumnName("id");
+            b.Property(r => r.Name).HasColumnName("name");
+            b.Property(r => r.Email).HasColumnName("email");
+            b.Property(r => r.Phone).HasColumnName("phone");
+            b.Property(r => r.CreatedAt).HasColumnName("created_at");
+        });
+
         modelBuilder.Entity<StaffMemberRow>(b =>
         {
             b.ToTable("staff_members");
