@@ -25,6 +25,16 @@ internal sealed class PostgreSqlStaffMemberRepository(SchedulingDbContext contex
     }
 
     /// <inheritdoc />
+    public async Task<IEnumerable<StaffMember>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        var rows = await context.StaffMembers
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
+
+        return rows.Select(StaffMemberMapper.ToDomain);
+    }
+
+    /// <inheritdoc />
     public async Task SaveAsync(StaffMember staffMember, CancellationToken cancellationToken = default)
     {
         var row = StaffMemberMapper.ToRow(staffMember);

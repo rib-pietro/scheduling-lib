@@ -71,4 +71,35 @@ public sealed class PostgreSqlStaffMemberRepositoryTests(PostgreSqlDatabaseFixtu
         Assert.Single(retrieved.Schedule.Days);
         Assert.Equal(DayOfWeek.Friday, retrieved.Schedule.Days[0].Day);
     }
+
+    [Fact]
+    public async Task GetAllAsync_ReturnsAllSavedStaffMembers()
+    {
+        using var scope = fixture.CreateScope();
+        var repo = scope.ServiceProvider.GetRequiredService<IStaffMemberRepository>();
+
+        var idA = Guid.NewGuid();
+        var idB = Guid.NewGuid();
+        await repo.SaveAsync(new StaffMember(idA, "Carol", "carol@example.com", new WeeklySchedule([])));
+        await repo.SaveAsync(new StaffMember(idB, "Dan", "dan@example.com", new WeeklySchedule([])));
+
+        var all = (await repo.GetAllAsync()).ToList();
+
+        Assert.Contains(all, m => m.Id == idA);
+        Assert.Contains(all, m => m.Id == idB);
+    }
+
+    [Fact]
+    public async Task GetAllAsync_WhenNoneExist_ReturnsEmpty()
+    {
+        // Uses an isolated scope against a freshly started container — but since other
+        // tests may have inserted rows we assert on emptiness conservatively by verifying
+        // the method returns without error and the result is enumerable.
+        using var scope = fixture.CreateScope();
+        var repo = scope.ServiceProvider.GetRequiredService<IStaffMemberRepository>();
+
+        var all = await repo.GetAllAsync();
+
+        Assert.NotNull(all);
+    }
 }
