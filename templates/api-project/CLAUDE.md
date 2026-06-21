@@ -8,11 +8,12 @@ This project consumes **scheduling-lib**. Before writing any domain logic, read 
 
 Key things to know from that README before starting:
 
+- The **Users domain** (`SchedulingLib.Users`) manages platform users (clients/guests) — `User`, `IUserService`, `RegisterUserRequest`. A user requires a name and at least one of email or phone. The user's `Id` is used as `client_id` in appointments and `guest_id` in reservations.
 - The **Services domain** (`SchedulingLib.Services`) handles staff-based appointment booking — `ServiceType`, `StaffMember`, `ServiceAppointment`, `IServiceAppointmentService`, `IServiceTypeService`.
 - The **Reservations domain** (`SchedulingLib.Reservations`) handles resource-based multi-night bookings — `ReservableResource`, `Reservation`, `IReservationService`.
-- **PostgreSQL persistence** (`SchedulingLib.Persistence.PostgreSQL`) provides ready-made repository implementations; call `PostgreSqlSchemaInitializer.InitializeAsync` at startup.
+- **PostgreSQL persistence** (`SchedulingLib.Persistence.PostgreSQL`) provides ready-made repository implementations for both Users and Services; call `PostgreSqlSchemaInitializer.InitializeAsync` at startup.
 - All service and entity operations return `Result<T>` — always check `IsSuccess` before using `Value`.
-- DI entry points are `AddServiceScheduling().AddPostgreSqlPersistence(connectionString)` and `AddReservationScheduling()`.
+- DI entry points are `AddUserScheduling().AddPostgreSqlPersistence(connectionString)`, `AddServiceScheduling().AddPostgreSqlPersistence(connectionString)`, and `AddReservationScheduling()`.
 
 ---
 
@@ -61,9 +62,11 @@ All NuGet package versions are declared once in `Directory.Packages.props` at th
   </PropertyGroup>
   <ItemGroup>
     <!-- scheduling-lib packages -->
-    <PackageVersion Include="SchedulingLib.Services" Version="1.0.0" />
-    <PackageVersion Include="SchedulingLib.Services.Extensions" Version="1.0.0" />
-    <PackageVersion Include="SchedulingLib.Persistence.PostgreSQL" Version="1.0.0" />
+    <PackageVersion Include="SchedulingLib.Users" Version="0.0.1" />
+    <PackageVersion Include="SchedulingLib.Users.Extensions" Version="0.0.1" />
+    <PackageVersion Include="SchedulingLib.Services" Version="0.0.1" />
+    <PackageVersion Include="SchedulingLib.Services.Extensions" Version="0.0.1" />
+    <PackageVersion Include="SchedulingLib.Persistence.PostgreSQL" Version="0.0.1" />
     <!-- add other packages here -->
   </ItemGroup>
 </Project>

@@ -14,9 +14,11 @@ All packages target **net10.0** and are published to [GitHub Packages](https://g
 | Package | Purpose |
 |---|---|
 | `SchedulingLib.Core` | Primitives, `Result<T>`, calendar connector abstraction |
+| `SchedulingLib.Users` | Users domain — `User` entity, `IUserRepository`, `IUserService` |
+| `SchedulingLib.Users.Extensions` | DI registration via `AddUserScheduling()` |
 | `SchedulingLib.Services` | Services domain — entities, value objects, repository and service interfaces |
 | `SchedulingLib.Services.Extensions` | DI registration via `AddServiceScheduling()` |
-| `SchedulingLib.Persistence.PostgreSQL` | PostgreSQL implementation of all Services repositories |
+| `SchedulingLib.Persistence.PostgreSQL` | PostgreSQL implementation of all Users and Services repositories |
 | `SchedulingLib.Reservations` | Reservations domain — entities, value objects, repository and service interface |
 | `SchedulingLib.Reservations.Extensions` | DI registration via `AddReservationScheduling()` |
 
@@ -39,6 +41,54 @@ Then reference packages without a version (use Central Package Management, or sp
 dotnet add package SchedulingLib.Services
 dotnet add package SchedulingLib.Services.Extensions
 dotnet add package SchedulingLib.Persistence.PostgreSQL
+```
+
+---
+
+## Users Domain
+
+Register platform users who act as clients in appointments or guests in reservations. A user requires a name and at least one contact method (email or phone).
+
+### Quick Start
+
+```csharp
+builder.Services
+    .AddUserScheduling()
+    .AddPostgreSqlPersistence(connectionString);
+
+await PostgreSqlSchemaInitializer.InitializeAsync(connectionString);
+```
+
+### User
+
+```csharp
+// Register via the service (validates name + email-or-phone rule)
+var request = new RegisterUserRequest(
+    Name: "Alice",
+    Email: "alice@example.com",
+    Phone: null);                    // at least one of Email or Phone is required
+
+Result<User> result = await userService.RegisterAsync(request);
+
+if (result.IsSuccess)
+{
+    User user = result.Value!;
+    // user.Id is the Guid used as client_id / guest_id in appointments and reservations
+}
+```
+
+### IUserService
+
+```csharp
+Task<Result<User>> RegisterAsync(RegisterUserRequest request, ...)
+Task<User?>         GetByIdAsync(Guid id, ...)
+```
+
+### IUserRepository
+
+```csharp
+Task<User?> GetByIdAsync(Guid id, ...);
+Task        SaveAsync(User user, ...);
 ```
 
 ---
@@ -337,16 +387,21 @@ Tables created:
 
 | Table | Key columns |
 |---|---|
+| `users` | `id`, `name`, `email`, `phone` (CHECK: email OR phone NOT NULL) |
 | `service_types` | `id`, `name`, `price NUMERIC(18,4)`, `duration_ticks BIGINT` |
 | `staff_members` | `id`, `name`, `email`, `profile_picture_url`, `schedule JSONB`, `offered_services JSONB`, `gallery JSONB` |
-| `service_appointments` | `id`, `staff_member_id`, `client_id`, `service_type_id` (FK → `service_types`), `date`, `time_slot_start/end`, `status` |
+| `service_appointments` | `id`, `staff_member_id`, `client_id` (FK → `users`), `service_type_id` (FK → `service_types`), `date`, `time_slot_start/end`, `status` |
 
 ### Registration
 
 ```csharp
 builder.Services
+    .AddUserScheduling()
+    .AddPostgreSqlPersistence(connectionString);
+
+builder.Services
     .AddServiceScheduling()
-    .AddPostgreSqlPersistence("Host=localhost;Database=scheduling;Username=postgres;Password=secret");
+    .AddPostgreSqlPersistence(connectionString);
 
 await PostgreSqlSchemaInitializer.InitializeAsync(connectionString);
 ```
